@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            background-image: url('Header1.jpg')
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding-top: 100px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 20px;
+            border: 0px solid #ccc;
+            border-radius: 5px 5px 0px 0px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 20px;
+            border: 0px solid #ccc;
+            border-radius: 0px 0px 5px 5px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #e94f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 55px;
+            font-size: medium;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: medium;
+            color: gray;
+        }
+        input[type="submit"]:hover {
+            background-color: #e94f61;
+        }
+        .checkbox {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+            margin-bottom: 5px;
+        }
+        .checkbox input[type="checkbox"]:checked::before {
+            content: "\2714";
+            display: block;
+            width: 15px;
+            height: 15px;
+            text-align: center;
+            line-height: 15px;
+            color: white;
+            background-color: red;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .forgot-password a{
+            text-decoration: none;
+            color: white;
+        }
+        .login-image{
+            display: block;
+            margin: 0px -25px 50px;
+            width: 350px;;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="zentrades-white-logo-2048x282-1.png" alt="Login" class="login-image">
+        <form action="login.php" method="POST">
+            <input type="text" id="username" name="username" placeholder="E-mail address" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <div class="checkbox">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+            <input type="submit" value="Sign In">
+        </form>
+        <div class="forgot-password">
+            <a href="mailto:support@zentrades.pro">Forgot your password?</a>
+        </div>
+    </div>
+
+    <script>
+        function validate() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(username)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must contain an uppercase letter, a number, and can only contain letters, numbers, and '@'.");
+                return false;
+            }
+            if (password !== "ZenTradesTest@123") {
+                alert("Incorrect password.");
+                return false;
+            }
+            window.location.href = "dashboard.html";
+            return true;
+        }
+    </script>
+</body>
+</html>
